@@ -43,7 +43,7 @@ Demo
 ----
 Placeholder for demo GIF (add later):
 
-![Demo GIF](assets/demo.gif)
+![Demo GIF](demo.gif)
 
 License
 -------
