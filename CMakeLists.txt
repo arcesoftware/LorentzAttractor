@@ -4,19 +4,29 @@ project(Lorenz3D)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Set your SDL3 paths here
-set(SDL3_INCLUDE_DIR "C:/SDL3/include")
-set(SDL3_LIB_DIR "C:/SDL3/lib/x64")
-
-include_directories(${SDL3_INCLUDE_DIR})
-link_directories(${SDL3_LIB_DIR})
-
-add_executable(Lorenz3D main.cpp)
-target_link_libraries(Lorenz3D SDL3)
-
-# This part copies the DLL to your folder so the app can run
-add_custom_command(TARGET Lorenz3D POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "C:/SDL3/lib/x64/SDL3.dll"
-        "$<TARGET_FILE_DIR:Lorenz3D>"
+include(FetchContent)
+# Fetch GLFW and GLAD
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+FetchContent_Declare(
+  glfw
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_TAG        3.3.8
 )
+FetchContent_Declare(
+  glad
+  GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+  GIT_TAG        v0.1.36
+)
+FetchContent_MakeAvailable(glfw glad)
+
+add_executable(Lorenz3D src/main_gl.cpp src/tesseract.cpp src/hypercube.cpp)
+
+target_include_directories(Lorenz3D PRIVATE ${glad_SOURCE_DIR}/include)
+
+target_link_libraries(Lorenz3D PRIVATE glfw glad)
+
+if (WIN32)
+  target_link_libraries(Lorenz3D PRIVATE opengl32)
+endif()
