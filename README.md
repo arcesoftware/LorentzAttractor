@@ -41,7 +41,6 @@ All logic lives in main.cpp. Attractor parameters and behavior are implemented i
 
 Demo
 ----
-Placeholder for demo GIF (add later):
 
 ![Demo GIF](demo.gif)
 
