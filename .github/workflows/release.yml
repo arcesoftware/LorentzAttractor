@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          cmake -S . -B out -G "Ninja" -DCMAKE_BUILD_TYPE=Release
+          cmake --build out --config Release
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: out/Lorenz3D.exe
+          token: ${{ secrets.GITHUB_TOKEN }}
