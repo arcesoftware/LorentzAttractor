@@ -1,0 +1,10 @@
+^C:\USERS\JARC5624.GLOBAL\DOCUMENTS\C++\LORENTZATTRACTOR\OUT\CMAKEFILES\D35E1E1ECBCFC2A130024027DD35327D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/jarc5624.GLOBAL/Documents/C++/LorentzAttractor -BC:/Users/jarc5624.GLOBAL/Documents/C++/LorentzAttractor/out --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/jarc5624.GLOBAL/Documents/C++/LorentzAttractor/out/Lorenz3D.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
