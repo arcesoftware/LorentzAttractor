@@ -1,5 +1,9 @@
 Anima3D / LorentzAttractor
 =========================
+Demo
+----
+
+![Demo GIF](demo.gif)
 
 Overview
 --------
@@ -38,11 +42,6 @@ Notes
 Source
 ------
 All logic lives in main.cpp. Attractor parameters and behavior are implemented inline and can be tuned there.
-
-Demo
-----
-
-![Demo GIF](demo.gif)
 
 License
 -------
